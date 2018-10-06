@@ -1,0 +1,352 @@
+# typedef enum {  // Eight possible node types
+#   THEN = 0,     // 0
+#   OR,           // 1
+#   AND,          // 2
+#   BEHAVIOR,     // 3
+#   ROOT,         // 4
+#   PLACE,        // 5
+#   BEHAVIOR_VM   // 6
+#   PICK,         // 7
+# } NodeTypes_t;
+
+# typedef enum {  // Eight possible robots
+#   PR2 = 0, // 0
+#   BAXTER,  // 1
+# } RobotTypes;
+
+
+NodeList: ['ROOT_4_0_000', 'THEN_0_0_001', 'AND_2_0_002', 'THEN_3_0_003', 'PICK_4_0_004','PLACE_4_0_005', 'THEN_3_0_006', 'PICK_4_0_007','PLACE_4_0_008', 'THEN_3_0_009', 'PICK_4_0_010', 'PLACE_4_0_011', 'OR_1_0_012', 'THEN_3_0_013', 'PICK_4_0_014', 'PLACE_4_0_015','THEN_3_0_016', 'PICK_4_0_017', 'PLACE_4_0_018', 'ROOT_4_1_019', 'THEN_0_1_020', 'AND_2_1_021', 'THEN_3_1_022', 'PICK_4_1_023','PLACE_4_1_024', 'THEN_3_1_025', 'PICK_4_1_026', 'PLACE_4_1_027', 'THEN_3_1_028', 'PICK_4_1_029', 'PLACE_4_1_030', 'OR_1_1_031', 'THEN_3_1_032', 'PICK_4_1_033', 'PLACE_4_1_034', 'THEN_3_1_035', 'PICK_4_1_036', 'PLACE_4_1_037']
+
+
+Nodes:
+  ROOT_4_0_000:
+    mask:
+      type: 4
+      robot: 0
+      node: 0
+    parent: 'NONE'
+    children: ['THEN_0_0_001']
+    peers: ['ROOT_4_1_019']
+  THEN_0_0_001:
+    mask:
+      type: 0
+      robot: 0
+      node: 1
+    parent: ROOT_4_0_000
+    children: ['AND_2_0_002', 'OR_1_0_012']
+    peers: ['THEN_0_1_020']
+  AND_2_0_002:
+    mask:
+      type: 2
+      robot: 0
+      node: 2
+    parent: THEN_0_0_001
+    children: ['THEN_3_0_003', 'THEN_3_0_006', 'THEN_3_0_009']
+    peers: ['AND_2_1_021']
+  THEN_3_0_003:
+    mask:
+      type: 0
+      robot: 0
+      node: 3
+    parent: AND_2_0_002
+    children: ['PICK_4_0_004', 'PLACE_4_0_005']
+    peers: ['THEN_3_1_022']
+  PICK_4_0_004:
+    mask:
+      type: 7
+      robot: 0
+      node: 4
+    parent: THEN_3_0_003
+    children: ['NONE']
+    peers: ['PICK_4_1_023']
+    object: clock   
+  PLACE_4_0_005:
+    mask:
+      type: 5
+      robot: 0
+      node: 5
+    parent: THEN_3_0_003
+    children: ['NONE']
+    peers: ['PLACE_4_1_024']
+    object: clock
+  THEN_3_0_006:
+    mask:
+      type: 0
+      robot: 0
+      node: 6
+    parent: AND_2_0_002
+    children: ['PICK_4_0_007', 'PLACE_4_0_008']
+    peers: ['THEN_3_1_025']    
+  PICK_4_0_007:
+    mask:
+      type: 7
+      robot: 0
+      node: 7
+    parent: THEN_3_0_006
+    children: ['NONE']
+    peers: ['PICK_4_1_026']
+    object: teddy_bear
+  PLACE_4_0_008:
+    mask:
+      type: 5
+      robot: 0
+      node: 8
+    parent: THEN_3_0_006
+    children: ['NONE']
+    peers: ['PLACE_4_1_027']
+    object: teddy_bear
+  THEN_3_0_009:
+    mask:
+      type: 0
+      robot: 0
+      node: 9
+    parent: AND_2_0_002
+    children: ['PICK_4_0_010', 'PLACE_4_0_011']
+    peers: ['THEN_3_1_028']    
+  PICK_4_0_010:
+    mask:
+      type: 7
+      robot: 0
+      node: 10
+    parent: THEN_3_0_009
+    children: ['NONE']
+    peers: ['PICK_4_1_029']
+    object: scissors
+  PLACE_4_0_011:
+    mask:
+      type: 5
+      robot: 0
+      node: 11
+    parent: THEN_3_0_009
+    children: ['NONE']
+    peers: ['PLACE_4_1_030']
+    object: scissors
+  OR_1_0_012:
+    mask:
+      type: 1
+      robot: 0
+      node: 12
+    parent: THEN_0_0_001
+    children: ['THEN_3_0_013', 'THEN_3_0_016']
+    peers: ['OR_1_1_031']
+  THEN_3_0_013:
+    mask:
+      type: 0
+      robot: 0
+      node: 13
+    parent: OR_1_0_012
+    children: ['PICK_4_0_014', 'PLACE_4_0_015']
+    peers: ['THEN_3_1_032']    
+  PICK_4_0_014:
+    mask:
+      type: 7
+      robot: 0
+      node: 14
+    parent: THEN_3_0_013
+    children: ['NONE']
+    peers: ['PICK_4_1_033']
+    object: cup
+  PLACE_4_0_015:
+    mask:
+      type: 5
+      robot: 0
+      node: 15
+    parent: THEN_3_0_013
+    children: ['NONE']
+    peers: ['PLACE_4_1_034']
+    object: cup
+  THEN_3_0_016:
+    mask:
+      type: 0
+      robot: 0
+      node: 16
+    parent: OR_1_0_012
+    children: ['PICK_4_0_017', 'PLACE_4_0_018']
+    peers: ['THEN_3_1_035']    
+  PICK_4_0_017:
+    mask:
+      type: 7
+      robot: 0
+      node: 17
+    parent: THEN_3_0_016
+    children: ['NONE']
+    peers: ['PICK_4_1_036']
+    object: apple
+  PLACE_4_0_018:
+    mask:
+      type: 5
+      robot: 0
+      node: 18
+    parent: THEN_3_0_016
+    children: ['NONE']
+    peers: ['PLACE_4_1_037']
+    object: apple
+
+
+# ---------------------------------------------
+
+
+  ROOT_4_1_019:
+    mask:
+      type: 4
+      robot: 1
+      node: 19
+    parent: 'NONE'
+    children: ['THEN_0_1_020']
+    peers: ['ROOT_4_0_000']
+  THEN_0_1_020:
+    mask:
+      type: 0
+      robot: 1
+      node: 20
+    parent: ROOT_4_1_019
+    children: ['AND_2_1_021', 'OR_1_1_031']
+    peers: ['THEN_0_0_001']
+  AND_2_1_021:
+    mask:
+      type: 2
+      robot: 1
+      node: 21
+    parent: THEN_0_1_020
+    children: ['THEN_3_1_022', 'THEN_3_1_025', 'THEN_3_1_028']
+    peers: ['AND_2_0_002']
+  THEN_3_1_022:
+    mask:
+      type: 0
+      robot: 1
+      node: 22
+    parent: AND_2_1_021
+    children: ['PICK_4_1_023', 'PLACE_4_1_024']
+    peers: ['THEN_3_0_003']
+  PICK_4_1_023:
+    mask:
+      type: 7
+      robot: 1
+      node: 23
+    parent: THEN_3_1_022
+    children: ['NONE']
+    peers: ['PICK_4_0_004']
+    object: clock
+  PLACE_4_1_024:
+    mask:
+      type: 5
+      robot: 1
+      node: 24
+    parent: THEN_3_1_022
+    children: ['NONE']
+    peers: ['PLACE_4_1_024']
+    object: clock
+  THEN_3_1_025:
+    mask:
+      type: 0
+      robot: 1
+      node: 25
+    parent: AND_2_1_021
+    children: ['PICK_4_1_026', 'PLACE_4_1_027']
+    peers: ['THEN_3_0_006']
+  PICK_4_1_026:
+    mask:
+      type: 7
+      robot: 1
+      node: 26
+    parent: THEN_3_1_025
+    children: ['NONE']
+    peers: ['PICK_4_0_007']
+    object: teddy_bear
+  PLACE_4_1_027:
+    mask:
+      type: 5
+      robot: 1
+      node: 27
+    parent: THEN_3_1_025
+    children: ['NONE']
+    peers: ['PLACE_4_0_008']
+    object: teddy_bear
+  THEN_3_1_028:
+    mask:
+      type: 0
+      robot: 1
+      node: 28
+    parent: AND_2_1_021
+    children: ['PICK_4_1_029', 'PLACE_4_1_030']
+    peers: ['THEN_3_0_009']
+  PICK_4_1_029:
+    mask:
+      type: 7
+      robot: 1
+      node: 29
+    parent: THEN_3_1_028
+    children: ['NONE']
+    peers: ['PICK_4_0_010']
+    object: scissors
+  PLACE_4_1_030:
+    mask:
+      type: 5
+      robot: 1
+      node: 30
+    parent: THEN_3_1_028
+    children: ['NONE']
+    peers: ['PLACE_4_0_011']
+    object: scissors
+  OR_1_1_031:
+    mask:
+      type: 1
+      robot: 1
+      node: 31
+    parent: THEN_0_1_020
+    children: ['THEN_3_1_032', 'THEN_3_1_035']
+    peers: ['OR_1_0_012']
+  THEN_3_1_032:
+    mask:
+      type: 0
+      robot: 1
+      node: 32
+    parent: OR_1_1_031
+    children: ['PICK_4_1_033', 'PLACE_4_1_034']
+    peers: ['THEN_3_0_013']
+  PICK_4_1_033:
+    mask:
+      type: 7
+      robot: 1
+      node: 33
+    parent: THEN_3_1_032
+    children: ['NONE']
+    peers: ['PICK_4_0_014']
+    object: cup
+  PLACE_4_1_034:
+    mask:
+      type: 5
+      robot: 1
+      node: 34
+    parent: THEN_3_1_032
+    children: ['NONE']
+    peers: ['PLACE_4_0_015']
+    object: cup
+  THEN_3_1_035:
+    mask:
+      type: 0
+      robot: 1
+      node: 35
+    parent: OR_1_1_031
+    children: ['PICK_4_1_036', 'PLACE_4_1_037']
+    peers: ['THEN_3_0_016']
+  PICK_4_1_036:
+    mask:
+      type: 7
+      robot: 1
+      node: 36
+    parent: THEN_3_1_035
+    children: ['NONE']
+    peers: ['PICK_4_0_017']
+    object: apple
+  PLACE_4_1_037:
+    mask:
+      type: 5
+      robot: 1
+      node: 37
+    parent: THEN_3_1_035
+    children: ['NONE']
+    peers: ['PLACE_4_0_018']
+    object: apple
+
+
