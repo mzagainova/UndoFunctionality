@@ -1,0 +1,3 @@
+<launch>
+	<node name="chatter" pkg="dialogue" type="chatter.py" output="screen"/>
+</launch>

@@ -1,0 +1,4 @@
+<launch>
+	<include file="$(find pr2_moveit_config)/launch/demo.launch"/>
+	<node name="pause" pkg="pause_pkg" type="pause_pkg_node" output="screen"/>
+</launch>
